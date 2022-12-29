@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-using CodingPlatform.AppCore.Commands;
-using CodingPlatform.AppCore.Interfaces.Services;
+using CodingPlatform.Domain.Interfaces.Services;
 using CodingPlatform.Web.DTO;
 using CodingPlatform.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
@@ -24,16 +22,12 @@ public class ChallengeController : CustomControllerBase
     [HttpPost("challenge")]
     public async Task<IActionResult> CreateChallenge(CreateChallengeDto param)
     {
-
-        var challenge = await _challengeService.CreateChallenge(new CreateChallengeCmd()
-        {
-            Description = param.Description,
-            Hours = param.Hours,
-            Tips = param.Tips,
-            Title = param.Title,
-            TournamentId = param.TournamentId,
-            UserId = GetCurrentUserId()
-        });
+        var challenge = await _challengeService.CreateChallenge(param.TournamentId,
+        GetCurrentUserId(),
+        param.Title,
+        param.Description,
+        param.Hours,
+        param.Tips);
 
         //TODO: cosa mettere nel primo parametro in Created?
         return Created(nameof(CreateChallenge), new ChallengeDto()

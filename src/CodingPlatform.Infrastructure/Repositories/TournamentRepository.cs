@@ -1,6 +1,5 @@
-using CodingPlatform.AppCore.Filters;
-using CodingPlatform.AppCore.Interfaces.Repositories;
 using CodingPlatform.Domain;
+using CodingPlatform.Domain.Interfaces.Repositories;
 using CodingPlatform.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,14 +17,15 @@ public class TournamentRepository : BaseRepository<Tournament>, ITournamentRepos
         .StandardInclude()
         .FirstOrDefaultAsync(t => t.Id == id);
 
-    public async Task<IEnumerable<Tournament>> GetFilteredAsync(TournamentSearch f = null)
+    public async Task<IEnumerable<Tournament>> GetFilteredAsync(string tournamentName)
     {
-        f ??= new TournamentSearch();
+        //f ??= new TournamentSearch();
+        
         IQueryable<Tournament> query = _dbCtx.Tournaments
             .StandardInclude();
 
-        if (!string.IsNullOrWhiteSpace(f.TournamentName))
-            query = query.Where(t => t.Name.ToLower().Contains(f.TournamentName.ToLower()));
+        if (!string.IsNullOrWhiteSpace(tournamentName))
+            query = query.Where(t => t.Name.ToLower().Contains(tournamentName.ToLower()));
 
         return await query.ToListAsync();
     }

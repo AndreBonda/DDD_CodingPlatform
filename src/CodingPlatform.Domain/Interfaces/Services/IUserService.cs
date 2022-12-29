@@ -1,6 +1,4 @@
-using CodingPlatform.Domain;
-
-namespace CodingPlatform.AppCore.Interfaces.Services;
+namespace CodingPlatform.Domain.Interfaces.Services;
 
 public interface IUserService
 {

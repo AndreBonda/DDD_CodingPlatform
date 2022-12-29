@@ -1,4 +1,4 @@
-using CodingPlatform.AppCore.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Repositories;
 using CodingPlatform.Domain;
 using CodingPlatform.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;

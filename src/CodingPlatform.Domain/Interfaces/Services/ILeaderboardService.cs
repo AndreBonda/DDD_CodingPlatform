@@ -1,9 +1,6 @@
-﻿using System;
+﻿using static CodingPlatform.Domain.Leaderboard;
 
-using CodingPlatform.Domain;
-using static CodingPlatform.Domain.Leaderboard;
-
-namespace CodingPlatform.AppCore.Interfaces.Services;
+namespace CodingPlatform.Domain.Interfaces.Services;
 
 public interface ILeaderboardService
 {

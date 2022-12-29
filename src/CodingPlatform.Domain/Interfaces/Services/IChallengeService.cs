@@ -1,11 +1,8 @@
-using CodingPlatform.AppCore.Commands;
-using CodingPlatform.Domain;
-
-namespace CodingPlatform.AppCore.Interfaces.Services;
+namespace CodingPlatform.Domain.Interfaces.Services;
 
 public interface IChallengeService
 {
-    Task<Challenge> CreateChallenge(CreateChallengeCmd cmd);
+    Task<Challenge> CreateChallenge(long tournamentId, long userId, string title, string description, int hours, IEnumerable<string> tips);
     Task<IEnumerable<Challenge>> GetChallengesByUserAsync(long userId, bool onlyActive);
 
     Task<Submission> StartChallengeAsync(long challengeId, long userId);

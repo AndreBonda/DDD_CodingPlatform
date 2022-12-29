@@ -1,8 +1,8 @@
-﻿using CodingPlatform.AppCore.Interfaces.Repositories;
-using CodingPlatform.AppCore.Interfaces.Services;
-using CodingPlatform.Domain;
+﻿using CodingPlatform.Domain;
+using CodingPlatform.Domain.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Services;
 
-namespace CodingPlatform.AppCore.Services;
+namespace CodingPlatform.Domain.Services;
 
 public class SubmissionService : ISubmissionService
 {

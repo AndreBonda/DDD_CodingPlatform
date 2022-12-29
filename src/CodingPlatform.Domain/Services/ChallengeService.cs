@@ -1,12 +1,8 @@
-using CodingPlatform.AppCore.Commands;
-using CodingPlatform.AppCore.Filters;
-using CodingPlatform.AppCore.Interfaces.Repositories;
-using CodingPlatform.AppCore.Interfaces.Services;
-using CodingPlatform.Domain;
 using CodingPlatform.Domain.Exception;
-using CodingPlatform.Domain.Extensions;
+using CodingPlatform.Domain.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Services;
 
-namespace CodingPlatform.AppCore.Services;
+namespace CodingPlatform.Domain.Services;
 
 public class ChallengeService : IChallengeService
 {
@@ -24,16 +20,16 @@ public class ChallengeService : IChallengeService
         _userRepo = userRepository;
     }
 
-    public async Task<Challenge> CreateChallenge(CreateChallengeCmd cmd)
+    public async Task<Challenge> CreateChallenge(long tournamentId, long userId, string title, string description, int hours, IEnumerable<string> tips)
     {
-        var tournament = await _tournamentRepo.GetByIdAsync(cmd.TournamentId);
+        var tournament = await _tournamentRepo.GetByIdAsync(tournamentId);
         if (tournament == null) throw new NotFoundException("Tournament not found");
 
-        var user = await _userRepo.GetByIdAsync(cmd.UserId);
-        var challenge = Challenge.CreateNew(cmd.Title,
-                cmd.Description,
-                cmd.Hours,
-                cmd.Tips);
+        var user = await _userRepo.GetByIdAsync(userId);
+        var challenge = Challenge.CreateNew(title,
+                description,
+                hours,
+                tips);
         tournament.AddChallenge(challenge, user);
         await _tournamentRepo.UpdateAsync(tournament);
 
@@ -76,11 +72,6 @@ public class ChallengeService : IChallengeService
 
     public async Task<Tip> RequestNewTipAsync(long challengeId, long userId)
     {
-        //var tournament = await _tournamentRepo.GetTournamentByChallengeAsync(challengeId);
-        //if (tournament == null) throw new NotFoundException("Challenge not found");
-
-        //var user = await _userRepo.GetByIdAsync(userId);
-        //var submission = tournament.GetSubmissionStatus(user, challengeId);
         var submission = await GetSubmissionStatusAsync(challengeId, userId);
         submission.RequestNewTip(userId);
         await _submissionRepo.UpdateAsync(submission);
@@ -89,11 +80,6 @@ public class ChallengeService : IChallengeService
 
     public async Task<Submission> EndChallengeAsync(long challengeId, string content, long userId)
     {
-        //var tournament = await _tournamentRepo.GetTournamentByChallengeAsync(challengeId);
-        //if (tournament == null) throw new NotFoundException("Challenge not found");
-
-        //var user = await _userRepo.GetByIdAsync(userId);
-        //var submission = tournament.GetSubmissionStatus(user, challengeId);
         var submission = await GetSubmissionStatusAsync(challengeId, userId);
         submission.EndSubmission(content, userId);
         await _submissionRepo.UpdateAsync(submission);

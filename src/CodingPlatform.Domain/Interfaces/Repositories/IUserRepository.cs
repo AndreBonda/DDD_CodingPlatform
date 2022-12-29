@@ -1,8 +1,4 @@
-using CodingPlatform.AppCore.Filters;
-using CodingPlatform.AppCore.Interfaces.Repositories;
-using CodingPlatform.Domain;
-
-namespace CodingPlatform.AppCore.Interfaces.Repositories;
+namespace CodingPlatform.Domain.Interfaces.Repositories;
 
 public interface IUserRepository : IRepository<User>
 {

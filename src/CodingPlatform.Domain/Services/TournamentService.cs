@@ -1,10 +1,9 @@
-using CodingPlatform.AppCore.Filters;
-using CodingPlatform.AppCore.Interfaces.Repositories;
-using CodingPlatform.AppCore.Interfaces.Services;
 using CodingPlatform.Domain;
 using CodingPlatform.Domain.Exception;
+using CodingPlatform.Domain.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Services;
 
-namespace CodingPlatform.AppCore.Services;
+namespace CodingPlatform.Domain.Services;
 
 public class TournamentService : ITournamentService
 {
@@ -39,7 +38,8 @@ public class TournamentService : ITournamentService
         await _tournamentRepository.UpdateAsync(tournament);
     }
 
-    public async Task<IEnumerable<Tournament>> GetTournaments(TournamentSearch filters) => await _tournamentRepository.GetFilteredAsync(filters);
+    public async Task<IEnumerable<Tournament>> GetTournaments(string tournamentName) 
+    => await _tournamentRepository.GetFilteredAsync(tournamentName);
 
 
 }

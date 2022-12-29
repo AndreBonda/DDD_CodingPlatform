@@ -1,7 +1,4 @@
-using CodingPlatform.AppCore.Filters;
-using CodingPlatform.Domain;
-
-namespace CodingPlatform.AppCore.Interfaces.Repositories;
+namespace CodingPlatform.Domain.Interfaces.Repositories;
 
 public interface IRepository<TEntity>
     where TEntity : BaseEntity

@@ -1,14 +1,10 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Authentication;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using CodingPlatform.AppCore.Interfaces.Repositories;
-using CodingPlatform.AppCore.Interfaces.Services;
 using CodingPlatform.Domain;
 using CodingPlatform.Domain.Exception;
+using CodingPlatform.Domain.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Services;
 using CodingPlatform.Domain.Interfaces.Utility;
 
-namespace CodingPlatform.AppCore.Services;
+namespace CodingPlatform.Domain.Services;
 
 public class UserService : IUserService
 {

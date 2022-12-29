@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingPlatform.Domain", "CodingPlatform.Domain\CodingPlatform.Domain.csproj", "{BCE99CB5-4ED8-4F23-9080-4F34605090EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingPlatform.AppCore", "CodingPlatform.AppCore\CodingPlatform.AppCore.csproj", "{B920F011-1632-405C-A23A-001DB00FB8E4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingPlatform.Infrastructure", "CodingPlatform.Infrastructure\CodingPlatform.Infrastructure.csproj", "{8E474FA3-3521-4C01-BB23-7BC4D3051F45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingPlatform.Web", "CodingPlatform.Web\CodingPlatform.Web.csproj", "{A2820F71-E1F2-4D2A-8782-E0DEF9A61334}"
@@ -24,10 +22,6 @@ Global
 		{BCE99CB5-4ED8-4F23-9080-4F34605090EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCE99CB5-4ED8-4F23-9080-4F34605090EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCE99CB5-4ED8-4F23-9080-4F34605090EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B920F011-1632-405C-A23A-001DB00FB8E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B920F011-1632-405C-A23A-001DB00FB8E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B920F011-1632-405C-A23A-001DB00FB8E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B920F011-1632-405C-A23A-001DB00FB8E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E474FA3-3521-4C01-BB23-7BC4D3051F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E474FA3-3521-4C01-BB23-7BC4D3051F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E474FA3-3521-4C01-BB23-7BC4D3051F45}.Release|Any CPU.ActiveCfg = Release|Any CPU

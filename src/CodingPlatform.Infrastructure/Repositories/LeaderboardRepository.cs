@@ -1,5 +1,5 @@
 ﻿using System;
-using CodingPlatform.AppCore.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Repositories;
 using CodingPlatform.Domain;
 using CodingPlatform.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;

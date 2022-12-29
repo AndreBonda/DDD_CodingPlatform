@@ -1,7 +1,5 @@
-using System.Security.Authentication;
-using CodingPlatform.AppCore.Interfaces.Repositories;
-using CodingPlatform.AppCore.Interfaces.Services;
-using CodingPlatform.Domain;
+using CodingPlatform.Domain.Interfaces.Repositories;
+using CodingPlatform.Domain.Interfaces.Services;
 using CodingPlatform.Web.DTO;
 using CodingPlatform.Web.Global;
 using Microsoft.AspNetCore.Mvc;

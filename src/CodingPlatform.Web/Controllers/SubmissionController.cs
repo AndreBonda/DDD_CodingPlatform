@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using CodingPlatform.AppCore.Interfaces.Services;
+using CodingPlatform.Domain.Interfaces.Services;
 using CodingPlatform.Web.DTO;
 using CodingPlatform.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;

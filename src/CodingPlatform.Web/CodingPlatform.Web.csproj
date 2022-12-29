@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodingPlatform.Domain\CodingPlatform.Domain.csproj" />
-    <ProjectReference Include="..\CodingPlatform.AppCore\CodingPlatform.AppCore.csproj" />
     <ProjectReference Include="..\CodingPlatform.Infrastructure\CodingPlatform.Infrastructure.csproj" />
   </ItemGroup>
 

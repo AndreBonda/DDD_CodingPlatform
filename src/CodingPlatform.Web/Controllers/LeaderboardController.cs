@@ -1,5 +1,4 @@
-﻿using System;
-using CodingPlatform.AppCore.Interfaces.Services;
+﻿using CodingPlatform.Domain.Interfaces.Services;
 using CodingPlatform.Web.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

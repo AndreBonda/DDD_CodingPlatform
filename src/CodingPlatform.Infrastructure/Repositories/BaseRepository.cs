@@ -1,7 +1,5 @@
-using System.Linq;
-using CodingPlatform.AppCore.Filters;
-using CodingPlatform.AppCore.Interfaces.Repositories;
 using CodingPlatform.Domain;
+using CodingPlatform.Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodingPlatform.Infrastructure.Repositories;

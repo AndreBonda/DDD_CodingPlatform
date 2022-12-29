@@ -1,6 +1,6 @@
 using CodingPlatform.Domain;
 
-namespace CodingPlatform.AppCore.Interfaces.Repositories;
+namespace CodingPlatform.Domain.Interfaces.Repositories;
 
 public interface IChallengeRepository : IRepository<Challenge>
 {

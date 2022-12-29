@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodingPlatform.Domain\CodingPlatform.Domain.csproj" />
-    <ProjectReference Include="..\CodingPlatform.AppCore\CodingPlatform.AppCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -11,7 +10,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.25.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,5 +1,4 @@
 using System.Text;
-using CodingPlatform.AppCore.StartUp;
 using CodingPlatform.Infrastructure;
 using CodingPlatform.Infrastructure.StartUp;
 using CodingPlatform.Web.Global;
@@ -55,7 +54,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // StartUp Infrastructure
 builder.Services.SetupServicesInfrastructure();
-builder.Services.SetupServicesAppCore();
 // Http context accessor
 builder.Services.AddHttpContextAccessor();
 
