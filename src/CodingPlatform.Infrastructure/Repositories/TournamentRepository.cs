@@ -20,7 +20,7 @@ public class TournamentRepository : BaseRepository<Tournament>, ITournamentRepos
     public async Task<IEnumerable<Tournament>> GetFilteredAsync(string tournamentName)
     {
         //f ??= new TournamentSearch();
-        
+
         IQueryable<Tournament> query = _dbCtx.Tournaments
             .StandardInclude();
 
@@ -29,8 +29,6 @@ public class TournamentRepository : BaseRepository<Tournament>, ITournamentRepos
 
         return await query.ToListAsync();
     }
-
-
 
     public async Task<bool> TournamentNameExist(string name)
     {
@@ -53,4 +51,11 @@ public class TournamentRepository : BaseRepository<Tournament>, ITournamentRepos
 
         return await query.ToListAsync();
     }
+
+    public async Task<IEnumerable<Tournament>> GetTournamentsByAdmin(long userId) =>
+        await _dbCtx.Tournaments
+        .StandardInclude()
+        .Where(t => t.Admin.Id == userId)
+        .OrderByDescending(t => t.CreateDate)
+        .ToListAsync();
 }

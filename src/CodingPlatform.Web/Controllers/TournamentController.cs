@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CodingPlatform.Web.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 [Authorize]
 public class TournamentController : CustomControllerBase
 {
@@ -26,19 +26,26 @@ public class TournamentController : CustomControllerBase
         return Ok(tournaments.Select(t => t.ToDTO()));
     }
 
+    [HttpGet("tournament/{tournamentId}")]
+    public async Task<IActionResult> GetTournamentById(long tournamentId)
+    {
+        var tournament = await _tournamentService.GetTournamentByIdAsync(tournamentId);
+        return Ok(tournament.ToDTO());
+    }
+
     [HttpPost("tournament")]
     public async Task<IActionResult> CreateTournament(CreateTournamentDto param)
     {
         var tournament = await _tournamentService.Create(param.TournamentName, param.MaxParticipants,
             GetCurrentUserId());
 
-        return Created(nameof(CreateTournament), tournament.ToDTO());
+        return CreatedAtAction(nameof(GetTournaments), new { id = tournament.Id }, tournament);
     }
 
-    [HttpPost("subscription/{tournamentId}")]
+    [HttpPost("tournament/subscription/{tournamentId}")]
     public async Task<IActionResult> Subscription(long tournamentId)
     {
         await _tournamentService.SubscribeUserRefactor(tournamentId, GetCurrentUserId());
-        return Created(nameof(Subscription), "Subscription created");
+        return Ok("Subscription created");
     }
 }

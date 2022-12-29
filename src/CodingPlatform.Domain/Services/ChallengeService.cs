@@ -20,6 +20,16 @@ public class ChallengeService : IChallengeService
         _userRepo = userRepository;
     }
 
+    public async Task<Challenge> GetChallengeByIdAsync(long challengeId, long userId)
+    {
+        var challenge = await _challengeRepo.GetByIdAsync(challengeId);
+        if (challenge == null) throw new NotFoundException("challenge not found");
+        
+        var tournament = await _tournamentRepo.GetTournamentByChallengeAsync(challengeId);
+        if(tournament.Admin.Id != userId) throw new ForbiddenException("User is not allowed this challenge");
+        return challenge;
+    }
+
     public async Task<Challenge> CreateChallenge(long tournamentId, long userId, string title, string description, int hours, IEnumerable<string> tips)
     {
         var tournament = await _tournamentRepo.GetByIdAsync(tournamentId);
@@ -46,6 +56,14 @@ public class ChallengeService : IChallengeService
         if (onlyActive)
             challenges = challenges.Where(c => c.IsActive());
 
+        return challenges;
+    }
+
+    public async Task<IEnumerable<Challenge>> GetChallengesByAdminAsync(long userId)
+    {
+        var tournaments = await _tournamentRepo.GetTournamentsByAdmin(userId);
+        if (tournaments.Count() == 0) return Enumerable.Empty<Challenge>();
+        var challenges = tournaments.SelectMany(t => t.Challenges);
         return challenges;
     }
 

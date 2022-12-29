@@ -2,9 +2,10 @@ namespace CodingPlatform.Domain.Interfaces.Services;
 
 public interface IChallengeService
 {
+    Task<Challenge> GetChallengeByIdAsync(long challengeId, long userId);
     Task<Challenge> CreateChallenge(long tournamentId, long userId, string title, string description, int hours, IEnumerable<string> tips);
     Task<IEnumerable<Challenge>> GetChallengesByUserAsync(long userId, bool onlyActive);
-
+    Task<IEnumerable<Challenge>> GetChallengesByAdminAsync(long userId);
     Task<Submission> StartChallengeAsync(long challengeId, long userId);
     Task<Submission> GetSubmissionStatusAsync(long challengeId, long userId);
     /// <summary>

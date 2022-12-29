@@ -30,6 +30,12 @@ namespace CodingPlatform.Infrastructure.Extensions
                 .Include(s => s.Admin)
                 .Include(s => s.Challenge);
         }
+
+        public static IQueryable<Challenge> StandardInclude(this DbSet<Challenge> set)
+        {
+            return set
+            .Include(c => c.Tips);
+        }
     }
 }
 

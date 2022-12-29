@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CodingPlatform.Web.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -20,27 +20,18 @@ public class UserController : ControllerBase
         _configuration = configuration;
     }
 
-    [HttpPost("register")]
+    [HttpPost("user/register")]
     public async Task<IActionResult> Register(RegisterUserDto param)
     {
         var user = await _userService.Register(param.Email, param.Username, param.Password);
-
-        return Created(nameof(Register), new UserDto()
-        {
-            Id = user.Id,
-            Email = user.Email,
-            UserName = user.Username,
-            DateCreated = user.CreateDate
-        });
+        return Ok("User created");
     }
 
-    [HttpPost("login")]
+    [HttpPost("user/login")]
     public async Task<IActionResult> Login(LoginUserDto param)
     {
         var jwt = await _userService.Login(param.Email, param.Password, _configuration.GetSection(Consts.JwtConfigSections).Value);
-
         if (string.IsNullOrEmpty(jwt)) return Forbid("Wrong password");
-
         return Ok(jwt);
     }
 

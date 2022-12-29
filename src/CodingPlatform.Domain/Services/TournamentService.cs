@@ -18,6 +18,13 @@ public class TournamentService : ITournamentService
         _submissionRepository = submissionRepository;
     }
 
+    public async Task<Tournament> GetTournamentByIdAsync(long tournamentId)
+    {
+        var tournament = await _tournamentRepository.GetByIdAsync(tournamentId);
+        if (tournament == null) throw new NotFoundException("tournament not found");
+        return tournament;
+    }
+
     public async Task<Tournament> Create(string tournamentName, int maxParticipants, long userId)
     {
         if (await _tournamentRepository.TournamentNameExist(tournamentName))

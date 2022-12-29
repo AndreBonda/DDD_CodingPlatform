@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CodingPlatform.Web.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     [Authorize]
     public class LeaderboardController : CustomControllerBase
     {

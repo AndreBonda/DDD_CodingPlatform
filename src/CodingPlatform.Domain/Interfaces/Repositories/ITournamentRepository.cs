@@ -9,6 +9,10 @@ public interface ITournamentRepository : IRepository<Tournament>
     /// </summary>
     Task<IEnumerable<Tournament>> GetSubscribedTournamentsByUserAsync(long userId);
     /// <summary>
+    /// returns all tournaments where the user is the admin.
+    /// </summary>
+    Task<IEnumerable<Tournament>> GetTournamentsByAdmin(long userId);
+    /// <summary>
     /// Given a challenge id, returns the related tournament.
     /// </summary>
     Task<Tournament> GetTournamentByChallengeAsync(long challengeId);

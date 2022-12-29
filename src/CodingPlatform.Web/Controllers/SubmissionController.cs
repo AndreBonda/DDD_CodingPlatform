@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CodingPlatform.Web.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api")]
 [Authorize]
 public class SubmissionController : CustomControllerBase
 {
@@ -20,11 +20,10 @@ public class SubmissionController : CustomControllerBase
         _submissionService = submissionService;
     }
 
-    [HttpGet("submissions/admin/{challengeId}")]
+    [HttpGet("submissions/{challengeId}")]
     public async Task<IActionResult> GetSubmissions(long challengeId, [FromQuery] SearchSubmissionDTO param)
     {
         var submissions = await _submissionService.GetSubmissionsByChallengeAsync(challengeId, param.OnlySubmitted, param.ExcludeEvaluated, GetCurrentUserId());
-
         return Ok(submissions.Select(s => s.ToDTO()));
     }
 
@@ -32,8 +31,7 @@ public class SubmissionController : CustomControllerBase
     public async Task<IActionResult> EvaluateSubmission(long submissionId, [FromBody][Range(0, 5)] int score)
     {
         var submission = await _submissionService.EvaluateSubmission(submissionId, score, GetCurrentUserId());
-
-        return Ok(submission.ToDTO());
+        return Ok("submission evaluated");
     }
 }
 
